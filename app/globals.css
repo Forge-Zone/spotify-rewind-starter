@@ -1,0 +1,358 @@
+@import "tailwindcss";
+
+/* tailwind works fine, we have written CSS to provide a centralized design system */
+
+/* Aura Background */
+@theme inline {
+  --animate-aurora: aurora 60s linear infinite;
+  @keyframes aurora {
+    from {
+      background-position: 50% 50%, 50% 50%;
+    }
+    to {
+      background-position: 350% 50%, 350% 50%;
+    }
+  }
+}
+
+/* ===== BASE STYLES ===== */
+:root {
+  --text-color: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.75);
+  --text-tertiary: rgba(255, 255, 255, 0.5);
+  --text-muted: rgba(255, 255, 255, 0.25);
+  --bg-color: #000000;
+  --bg-elevated: rgba(255, 255, 255, 0.05);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-focus: rgba(255, 255, 255, 0.75);
+  --font-family: "Manrope", sans-serif;
+  --transition-standard: all 0.2s ease-in-out;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* ===== LAYOUT COMPONENTS ===== */
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-flow: column nowrap;
+  background-color: var(--bg-color);
+  gap: 10px;
+  min-height: 100vh;
+  overflow: auto;
+  position: relative;
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  flex-flow: column nowrap;
+  gap: 64px;
+  max-width: 1200px;
+  height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  padding: 50px;
+  position: relative;
+}
+
+/* ===== HEADER COMPONENTS ===== */
+.header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+}
+
+.header-title {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.header-title h1 {
+  width: 100%;
+  font-weight: 700;
+  font-size: 72px;
+  letter-spacing: -4px;
+  line-height: 1.2em;
+  margin: 0;
+}
+
+.header-subtitle h2 {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.4em;
+  color: var(--text-secondary);
+  margin: 0 0 24px 0;
+}
+
+/* ===== BUTTON COMPONENTS ===== */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.button {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  border-radius: 100px;
+  display: flex;
+  font-weight: 900;
+  padding: 16px 24px;
+  cursor: pointer;
+  opacity: 1;
+  transition: var(--transition-standard);
+}
+
+.button:hover {
+  opacity: 0.7;
+  transform: scale(1.05);
+}
+
+.generate p {
+  color: var(--text-color);
+  margin: 0;
+  font-weight: 600;
+}
+
+/* ===== PROMPT COMPONENTS ===== */
+.prompt-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 610px;
+}
+
+.prompt-box {
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-elevated);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 150px;
+  padding: 20px;
+  width: 100%;
+  resize: none;
+  outline: none;
+  font-size: 16px;
+  line-height: 1.6em;
+  color: var(--text-secondary);
+  transition: var(--transition-standard);
+}
+
+.prompt-box:focus {
+  border-color: var(--border-focus);
+}
+
+textarea {
+  font-family: var(--font-family);
+}
+
+.prompt-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.key-stroke,
+.or {
+  display: flex;
+  flex-direction: column;
+}
+
+.key-stroke p {
+  color: var(--text-secondary);
+  white-space: pre;
+}
+
+.or p {
+  color: var(--text-muted);
+}
+
+/* ===== BADGE COMPONENTS ===== */
+.badge-container {
+  display: flex;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
+.badge-container a {
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+  border-radius: 54.3478% / 238.095%;
+  filter: grayscale(1);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1em;
+  color: var(--text-color);
+  padding: 12px;
+  text-decoration: none;
+  transition: var(--transition-standard);
+}
+
+.badge-container a:hover {
+  filter: grayscale(0);
+  border-color: var(--border-focus);
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+}
+
+.badge img {
+  width: 22px;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+  padding-right: 5px;
+}
+
+.badge p {
+  margin: 0;
+}
+
+/* ===== UTILS ===== */
+.grow {
+  transition: var(--transition-standard);
+}
+
+.grow:hover {
+  transform: scale(1.1);
+}
+
+.loading {
+  opacity: 0.7;
+  cursor: default;
+}
+
+/* ===== OUTPUT COMPONENTS ===== */
+.output {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.output-header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.output-header h3 {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.4em;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.output-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.output-content p {
+  text-align: center;
+  white-space: pre-line;
+  color: var(--text-tertiary);
+}
+
+/* ===== ANIMATIONS ===== */
+.loader {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 2px solid var(--text-color);
+  border-right: 2px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.loader.dark {
+  border-top: 2px solid var(--bg-color);
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (min-width: 810px) and (max-width: 1199px) {
+  .container {
+    max-width: 600px;
+  }
+
+  .prompt-container {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 809px) {
+  .container {
+    max-width: 500px;
+  }
+
+  .prompt-container {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    max-width: 400px;
+    padding: 30px;
+  }
+
+  .header-title h1 {
+    font-size: 50px;
+  }
+
+  .header-subtitle h2 {
+    text-align: center;
+  }
+
+  .key-stroke,
+  .or {
+    display: none;
+  }
+
+  .prompt-buttons {
+    justify-content: center;
+  }
+
+  .prompt-container {
+    max-width: 400px;
+  }
+}
