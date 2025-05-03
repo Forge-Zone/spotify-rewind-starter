@@ -12,12 +12,6 @@ const Home = () => {
           <div className="header-subtitle">
             <h2>insert your subtitle here</h2>
           </div>
-
-          <div className="button-container">
-            <Link href="/rewind">
-              <button className="button">Login with Spotify</button>
-            </Link>
-          </div>
         </div>
       </div>
       <BuildWithForgeZone />
