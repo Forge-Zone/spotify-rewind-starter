@@ -1,5 +1,4 @@
 import Link from "next/link";
-import BuildWithForgeZone from "@/components/BuildWithForgeZone";
 
 const Home = () => {
   return (
